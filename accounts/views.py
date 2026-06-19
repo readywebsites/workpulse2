@@ -9,6 +9,9 @@ from django.db.models import Avg, Sum
 from datetime import timedelta
 from django.utils import timezone
 
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+
 from django.contrib.auth import authenticate
 
 from rest_framework.views import APIView
@@ -79,7 +82,7 @@ class LoginView(APIView):
 
 
 
-
+@method_decorator(csrf_exempt, name='dispatch')
 class RegisterCompanyView(APIView):
 
     authentication_classes = []
