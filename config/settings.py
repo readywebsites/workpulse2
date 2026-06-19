@@ -146,6 +146,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS SETTINGS
 CORS_ALLOW_ALL_ORIGINS = True
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://workpulsepro.biz499.com",
+    "https://www.workpulsepro.biz499.com",
+]
+
 
 # REST FRAMEWORK SETTINGS
 REST_FRAMEWORK = {
