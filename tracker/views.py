@@ -1,3 +1,4 @@
+import profile
 from urllib import request, response
 
 from django.shortcuts import render
@@ -340,13 +341,15 @@ class UploadScreenshotView(APIView):
                 user=request.user
             )
 
-            screenshot = Screenshot.objects.create(
-                user=request.user,
-                company=profile.company,
-                task=task,
-                image=image
-            )
+    active = profile.active_seconds >= profile.idle_seconds
 
+             screenshot = Screenshot.objects.create(
+               user=request.user,
+               company=profile.company,
+               task=task,
+               image=image,
+            is_active=active
+          )
             serializer = ScreenshotSerializer(
                 screenshot
             )
@@ -436,6 +439,9 @@ class CompanyScreenshotsView(APIView):
 
                 "created_at":
                 shot.created_at
+
+                 "is_active":
+                shot.is_active
             })
 
         return Response(data)

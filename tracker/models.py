@@ -29,7 +29,7 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
-    
+
 
 class WorkSession(models.Model):
 
@@ -64,7 +64,7 @@ class WorkSession(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.task.title}"
-    
+
 
 class Screenshot(models.Model):
 
@@ -87,6 +87,11 @@ class Screenshot(models.Model):
 
     image = models.ImageField(
         upload_to="screenshots/"
+    )
+
+    # NEW FIELD
+    is_active = models.BooleanField(
+        default=True
     )
 
     created_at = models.DateTimeField(
