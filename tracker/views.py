@@ -341,9 +341,9 @@ class UploadScreenshotView(APIView):
                 user=request.user
             )
 
-    active = profile.active_seconds >= profile.idle_seconds
+            active = profile.active_seconds >= profile.idle_seconds
 
-             screenshot = Screenshot.objects.create(
+            screenshot = Screenshot.objects.create(
                user=request.user,
                company=profile.company,
                task=task,
@@ -438,7 +438,7 @@ class CompanyScreenshotsView(APIView):
                 shot.image.url,
 
                 "created_at":
-                shot.created_at
+                shot.created_at,
 
                  "is_active":
                 shot.is_active
