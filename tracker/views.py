@@ -344,12 +344,12 @@ class UploadScreenshotView(APIView):
             active = profile.active_seconds >= profile.idle_seconds
 
             screenshot = Screenshot.objects.create(
-               user=request.user,
-               company=profile.company,
-               task=task,
-               image=image,
-            is_active=active
-          )
+                user=request.user,
+                company=profile.company,
+                task=task,
+                image=image,
+                is_active=active
+            ) 
             serializer = ScreenshotSerializer(
                 screenshot
             )
